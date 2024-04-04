@@ -23,6 +23,7 @@ public enum MicropolisMessage
 	NEED_STADIUM,          //   7            doMessages           1/20
 	NEED_SEAPORT,          //   8            doMessages           1/20
 	NEED_AIRPORT,          //   9            doMessages
+	NEED_FOOD,
 	HIGH_POLLUTION,        //  10            doMessages           1/20
 	HIGH_CRIME,            //  11            doMessages           1/19
 	HIGH_TRAFFIC,          //  12            doMessages           1/20
