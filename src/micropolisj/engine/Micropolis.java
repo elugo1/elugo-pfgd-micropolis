@@ -125,7 +125,7 @@ public class Micropolis
 	int nuclearCount;
 	int seaportCount;
 	int airportCount;
-
+	int farmCount;
 	int totalPop;
 	int lastCityPop;
 
@@ -1467,6 +1467,7 @@ public class Micropolis
 		bb.put("STADIUM_FULL", new MapScanner(this, MapScanner.B.STADIUM_FULL));
 		bb.put("AIRPORT", new MapScanner(this, MapScanner.B.AIRPORT));
 		bb.put("SEAPORT", new MapScanner(this, MapScanner.B.SEAPORT));
+		bb.put("FARM", new MapScanner(this, MapScanner.B.FARM));
 
 		this.tileBehaviors = bb;
 	}
@@ -2534,7 +2535,7 @@ public class Micropolis
 			}
 			break;
 		case 10:
-			if (totalZoneCount / 8 >= indZoneCount) {
+			if (totalZoneCount / 8 >= Math.max(indZoneCount, resZoneCount)) {
 				sendMessage(MicropolisMessage.NEED_IND);
 			}
 			break;
