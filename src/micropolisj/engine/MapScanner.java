@@ -41,7 +41,9 @@ class MapScanner extends TileBehavior
 		STADIUM_EMPTY,
 		STADIUM_FULL,
 		AIRPORT,
-		SEAPORT;
+		SEAPORT,
+		FARM;
+			
 	}
 
 	@Override
@@ -83,7 +85,9 @@ class MapScanner extends TileBehavior
 			return;
 		case SEAPORT:
 			doSeaport();
-			return;
+			return;	
+		case FARM:
+			doFarm();
 		default:
 			assert false;
 		}
@@ -309,6 +313,19 @@ class MapScanner extends TileBehavior
 
 		if (powerOn && !city.hasSprite(SpriteKind.SHI)) {
 			city.generateShip();
+		}
+	}
+	
+	void doFarm()
+	{
+		boolean powerOn = checkZonePower();
+		city.farmCount++;
+		
+		int tpop = industrialZonePop(tile);
+		city.indPop += tpop;
+		
+		if ((city.cityTime % 16) == 0) {
+			repairZone(FARM, 6);
 		}
 	}
 
