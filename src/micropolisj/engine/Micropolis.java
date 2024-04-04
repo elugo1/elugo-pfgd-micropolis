@@ -2539,6 +2539,10 @@ public class Micropolis
 				sendMessage(MicropolisMessage.NEED_IND);
 			}
 			break;
+		case 12:
+			if(totalZoneCount/10 >= farmCount) {
+				sendMessage(MicropolisMessage.NEED_FOOD);
+			}
 		case 14:
 			if (totalZoneCount > 10 && totalZoneCount * 2 > roadTotal) {
 				sendMessage(MicropolisMessage.NEED_ROADS);

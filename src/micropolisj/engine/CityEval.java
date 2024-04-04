@@ -102,6 +102,7 @@ public class CityEval
 		z += engine.airportCount * 10000;
 		z += engine.coalCount * 3000;
 		z += engine.nuclearCount * 6000;
+		z += engine.farmCount * 400;
 		cityAssValue = z * 1000;
 	}
 
@@ -130,6 +131,7 @@ public class CityEval
 		problemTable.put(CityProblem.TRAFFIC, averageTrf());
 		problemTable.put(CityProblem.UNEMPLOYMENT, getUnemployment());
 		problemTable.put(CityProblem.FIRE, getFire());
+		problemTable.put(CityProblem.HUNGER,getHunger());
 
 		problemVotes = voteProblems(problemTable);
 
@@ -206,6 +208,21 @@ public class CityEval
 		return b;
 	}
 
+	
+	int getHunger()
+	{
+		int b = (engine.comPop + engine.indPop) * 8;
+		if (b == 0)
+			return 0;
+
+		double r = (double)engine.resPop / (double)b;
+		b = (int)Math.floor((r-1.0)*255);
+		if (b > 255) {
+			b = 255;
+		}
+		return b;
+		
+	}
 	int getFire()
 	{
 		int z = engine.firePop * 5;
